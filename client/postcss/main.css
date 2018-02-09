@@ -1,0 +1,10 @@
+@component-namespace dw {
+
+  @b app {
+
+    @e title {
+      font-size: 48px;
+      color: yellowgreen;
+    }
+  }
+}
