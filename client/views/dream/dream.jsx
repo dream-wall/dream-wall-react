@@ -69,12 +69,10 @@ class Dream extends Component {
       });
     }
     if (page === 1) { // 首次加载动画
-      // this.loading = true;
       this.setState({
         loading: true,
       });
     } else { // 体验更多梦想加载动画
-      // this.more = true;
       this.setState({
         more: true,
       });
@@ -85,30 +83,21 @@ class Dream extends Component {
       sort,
     }).then((res) => {
       if (Math.ceil(res.result.count / this.state.row) === page) {
-        // this.end = true;
         this.setState({
           end: true,
         });
       }
       if (page === 1) {
-        setTimeout(() => {
-          // this.dreams = res.result.rows;
-          // this.loading = false;
-          this.setState({
-            dreams: res.result.rows,
-            loading: false,
-          });
-        }, 1000);
+        this.setState({
+          dreams: res.result.rows,
+          loading: false,
+        });
       } else {
         this.state.dreams.push(...res.result.rows);
-        setTimeout(() => {
-          // this.dreams.push.apply(this.dreams, res.result.rows);
-          // this.more = false;
-          this.setState({
-            dreams: this.state.dreams,
-            more: false,
-          });
-        }, 1000);
+        this.setState({
+          dreams: this.state.dreams,
+          more: false,
+        });
       }
     });
   }
@@ -119,7 +108,6 @@ class Dream extends Component {
     this.setState({
       page: nextPage,
     });
-    console.log(nextPage, row, sort);
     this.getDreams({ page: nextPage, row, sort });
   }
 
@@ -149,7 +137,6 @@ class Dream extends Component {
             </span>
           </div>
         </div>
-        {more}
         {
           dreams.length > 0 && !loading ?
             [
